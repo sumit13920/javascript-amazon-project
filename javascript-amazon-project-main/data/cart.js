@@ -1,3 +1,5 @@
+import {validDeliveryOption} from './deliveryOptions.js';
+
 export let cart ;
 
 loadFromStorage();
@@ -69,6 +71,14 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
       matchingItem = cartItem
     }
   });
+  // Edge case check - if there is no matching item, we should not do anything
+  if (!matchingItem) {
+    return;
+  }
+  // Edge case check - if the delivery option is not valid, we should not do anything
+  if (!validDeliveryOption(deliveryOptionId)) {
+    return;
+  }
 
   matchingItem.deliveryOptionId = deliveryOptionId;
 

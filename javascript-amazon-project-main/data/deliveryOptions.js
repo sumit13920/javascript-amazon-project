@@ -1,6 +1,6 @@
 export const deliveryOptions = [
   {
-    id: '1',   
+    id: '1',
     deliveryDays: 7,
     priceCents: 0
   },
@@ -21,9 +21,21 @@ export function getDeliveryOption(deliveryOptionId) {
 
   deliveryOptions.forEach((option) => {
     if (option.id === deliveryOptionId) {
-       deliveryOption = option;
+      deliveryOption = option;
     }
   });
 
   return deliveryOption || deliveryOption[0];
+}
+//Q16m. ans:
+export function validDeliveryOption(deliveryOptionId) {
+  let found = false;
+
+  deliveryOptions.forEach((option) => {
+    if (option.id === deliveryOptionId) {
+      found = true;
+    }
+  });
+
+  return found;
 }
