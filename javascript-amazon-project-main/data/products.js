@@ -80,7 +80,7 @@ class clothing extends Product {
 //     console.log(this);
 //   }
 // };
-// object3.method();
+// object3.method();  
 
 
 export const products = [
