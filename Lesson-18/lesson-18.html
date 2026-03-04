@@ -8,6 +8,11 @@
 </head>
 
 <body>
+  <div class="greeting" style="border: 1px solid black; padding: 10px; margin: 10px;">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eaque facere a amet vero deleniti distinctio ullam ipsa eius dolorem quasi asperiores repellat dolor, molestiae, quae molestias officia. Fugiat, optio.
+  </div>
+
+  
   <script>
     // const xhr = new XMLHttpRequest();
 
@@ -17,7 +22,7 @@
 
     // xhr.open('GET', 'https://supersimplebackend.dev/greeting');
     // xhr.send();
-    
+
 
     /*
         fetch(
@@ -30,13 +35,34 @@
           console.log(text);
         });
     */
-
+  /*
     async function getGreeting() {
       const response = await fetch('https://supersimplebackend.dev/greeting');
       const text = await response.text();
       console.log(text);
     }
     getGreeting();
+  */
+    
+  async function PostGreeting() {
+    const response = await fetch('https://supersimplebackend.dev/greeting',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: 'Naren'
+      })
+    });
+
+    const text = await response.text();
+    console.log(text);
+  }
+  PostGreeting();
+
+
+
+
 
   </script>
 </body>
