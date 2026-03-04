@@ -9,10 +9,11 @@ async function loadPage() {
   try {
     // throw 'error1';
 
-    await loadProductsFetch();
+    await Promise.all([
 
-
-    await loadCartFetch();
+      loadProductsFetch(),
+      loadCartFetch()
+    ]);
 
   } catch (error) {
     console.log('Unexpected error. Please try again later.');
