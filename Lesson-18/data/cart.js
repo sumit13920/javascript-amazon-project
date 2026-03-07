@@ -104,6 +104,11 @@ export async function loadCartFetch() {
   return text;
 }
 
+// Extra feature: make the cart empty after creating an order.
+export function resetCart() {
+  cart = [];
+  saveToStorage();
+}
 
 
 

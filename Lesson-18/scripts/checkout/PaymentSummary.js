@@ -1,4 +1,4 @@
-import { cart } from '../../data/cart.js';
+import { cart, resetCart } from '../../data/cart.js';
 import { getProduct } from '../../data/products.js';
 import { getDeliveryOption } from '../../data/deliveryOptions.js';
 import { formatCurrency } from '../utils/money.js';
@@ -71,23 +71,24 @@ export function renderPaymentSummary() {
   document.querySelector('.js-place-order').addEventListener('click', async () => {
     try {
       const response = await fetch('https://supersimplebackend.dev/orders', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        cart: cart
-      })
-    });
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          cart: cart
+        })
+      });
 
-    const order = await response.json();
-    addOrder(order);
-    alert('Order placed! Thank you for shopping with us.'); 
+      const order = await response.json();
+      addOrder(order);
 
     } catch (error) {
-      alert('Sorry, there was an issue placing your order. Please try again.');
-      return;
+      console.log('Unexpected error. Try again later.');
     }
+
+    // Extra feature: make the cart empty after creating an order.
+    resetCart();
 
     window.location.href = 'orders.html';
   });
