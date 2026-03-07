@@ -42,7 +42,7 @@ async function loadPage() {
   function productsListHTML(order) {
     let productsListHTML = '';
 
-    order.products.forEach((productDetails) => {
+    (order.products || []).forEach((productDetails) => {
       const product = getProduct(productDetails.productId);
 
       productsListHTML += `
